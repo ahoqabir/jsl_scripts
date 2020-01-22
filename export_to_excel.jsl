@@ -1,0 +1,18 @@
+df = Current Data Table();
+If( Is Empty( df ),
+    Try( df = Open(), Throw( "No data table found" ) )
+);
+nw = new window("Give a File Name",
+    Spacer Box( size( 1, 10 ) ),
+    hlistbox(
+    
+        text = Text Edit Box("", << set width( 200 ) ),
+    ),
+    Spacer Box( size( 1, 10 ) ),
+    button box("Save to Desktop",
+           text = text << Get Text();
+           close( df, save( "~/Desktop/" || text || ".xlsx") );
+           nw << close window;
+        ),
+ 
+);
